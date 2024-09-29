@@ -40,7 +40,7 @@ server.post("/musicgeneration", async (req, res) => {
     const userMessage = req.body.message; 
 
     try {
-        const response = await MusicGeneration({"inputs": userMessage});
+        const response = await Music({"inputs": userMessage});
         const blob = response; 
         const arrayBuffer = await blob.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
