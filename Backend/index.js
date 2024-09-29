@@ -9,10 +9,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const server = express();
-const url=["https://markus-ai.vercel.app", "http://localhost:5173"];
+
 server.use(express.json());
 const corsOptions = {
-    origin: url,
+    origin: "https://markus-ai.vercel.app", 
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, 
     optionsSuccessStatus: 204, 
@@ -82,7 +82,7 @@ server.post("/codegeneration", async (req, res) => {
 });
 
 server.post("/music", async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app"); 
+    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app"); // Allow client origin
     res.setHeader("Access-Control-Allow-Methods", "POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     
