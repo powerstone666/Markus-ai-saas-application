@@ -83,9 +83,7 @@ server.post("/codegeneration", async (req, res) => {
 
 // Endpoint to generate music in FLAC (or any other format)
 server.post("/music", async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app"); // CORS policy
-    res.setHeader("Access-Control-Allow-Methods", "POST");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+   
   
     try {
       const userMessage = req.body.message; // Capture user message
