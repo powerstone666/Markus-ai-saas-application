@@ -7,7 +7,6 @@ import { red } from "@mui/material/colors";
 import LibraryMusicOutlined from "@mui/icons-material/LibraryMusicOutlined";
 
 function MusicGeneration() {
-  const [checked, setChecked] = useState(false);
   const [message, setMessage] = useState("");
   const [music, setMusic] = useState("");
   const [loading, setLoading] = useState(false);
