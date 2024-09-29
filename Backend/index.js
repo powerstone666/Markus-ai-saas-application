@@ -29,6 +29,22 @@ server.post("/image", async (req, res) => {
         const arrayBuffer = await blob.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
         
+        res.set('Content-Type', 'image/png'); 
+        res.send(buffer);
+    } catch (error) {
+        console.error('Error in /image endpoint:', error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+server.post("/musicgeneration", async (req, res) => {
+    const userMessage = req.body.message; 
+
+    try {
+        const response = await MusicGeneration({"inputs": userMessage});
+        const blob = response; 
+        const arrayBuffer = await blob.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        
         res.set('Content-Type', 'audio/mpeg'); 
         res.send(buffer);
     } catch (error) {
@@ -81,28 +97,7 @@ server.post("/codegeneration", async (req, res) => {
     }
 });
 
-// Endpoint to generate music in FLAC (or any other format)
-server.post("/music", async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app/musicgeneration"); // CORS policy
-    res.setHeader("Access-Control-Allow-Methods", "POST");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  
-    try {
-      const userMessage = req.body.message; // Capture user message
-      const response = await Music({ inputs: userMessage }); // Call the music gen function
-  
-      // Check if the response is in FLAC
-      const arrayBuffer = await response.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-  
-      // Setting the correct header for FLAC format
-      res.set('Content-Type', 'audio/flac');
-      res.send(buffer);
-    } catch (error) {
-      console.error('Error in /music endpoint:', error);
-      res.status(500).json({ error: "Internal server error" });
-    }
-  });
+
 
 server.post("/search", async (req, res) => {
     try {

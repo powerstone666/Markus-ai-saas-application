@@ -18,7 +18,7 @@ function MusicGeneration() {
 
     try {
       const res = await axios.post(
-        "https://markus-ai-saas-application.vercel.app/music",
+        "https://markus-ai-saas-application.vercel.app/musicgeneration",
         {
           message: message,
         },
