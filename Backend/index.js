@@ -12,7 +12,7 @@ const server = express();
 
 server.use(express.json());
 const corsOptions = {
-    origin: "*", 
+    origin: "https://markus-ai.vercel.app", 
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, 
     optionsSuccessStatus: 204, 
