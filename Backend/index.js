@@ -82,6 +82,10 @@ server.post("/codegeneration", async (req, res) => {
 });
 
 server.post("/music", async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app"); 
+    res.setHeader("Access-Control-Allow-Methods", "POST");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    
     try {
         const userMessage = req.body.message; 
         const response = await Music({"inputs": userMessage});
