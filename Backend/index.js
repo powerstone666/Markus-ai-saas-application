@@ -12,13 +12,13 @@ const server = express();
 
 server.use(express.json());
 const corsOptions = {
-    origin: "https://markus-ai.vercel.app", 
+    origin: "https://markus-ai.vercel.app", // Your front-end
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, 
-    optionsSuccessStatus: 204, 
-};
-
-server.use(cors(corsOptions));
+    credentials: true,
+    optionsSuccessStatus: 204,
+  };
+  
+  server.use(cors(corsOptions));
 
 server.post("/image", async (req, res) => {
     const userMessage = req.body.message; 
@@ -81,26 +81,28 @@ server.post("/codegeneration", async (req, res) => {
     }
 });
 
+// Endpoint to generate music in FLAC (or any other format)
 server.post("/music", async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app"); // Allow client origin
+    res.setHeader("Access-Control-Allow-Origin", "https://markus-ai.vercel.app"); // CORS policy
     res.setHeader("Access-Control-Allow-Methods", "POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    
+  
     try {
-        const userMessage = req.body.message; 
-        const response = await Music({"inputs": userMessage});
-        
-        const arrayBuffer = await response.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        
-        res.set('Content-Type', 'audio/wav');
-        res.send(buffer);
+      const userMessage = req.body.message; // Capture user message
+      const response = await Music({ inputs: userMessage }); // Call the music gen function
+  
+      // Check if the response is in FLAC
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+  
+      // Setting the correct header for FLAC format
+      res.set('Content-Type', 'audio/flac');
+      res.send(buffer);
     } catch (error) {
-        console.error('Error in /music endpoint:', error);
-        res.status(500).json({ error: "Internal server error" });
+      console.error('Error in /music endpoint:', error);
+      res.status(500).json({ error: "Internal server error" });
     }
-});
-
+  });
 
 server.post("/search", async (req, res) => {
     try {
