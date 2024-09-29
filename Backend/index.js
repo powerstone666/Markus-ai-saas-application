@@ -89,7 +89,7 @@ server.post("/music", async (req, res) => {
         const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
         
-        res.set('Content-Type', 'audio/mpeg');
+        res.set('Content-Type', 'audio/wav');
         res.send(buffer);
     } catch (error) {
         console.error('Error in /music endpoint:', error);

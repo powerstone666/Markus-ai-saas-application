@@ -18,6 +18,7 @@ function MusicGeneration() {
     try {
       const res = await axios.post(
         "https://markus-ai-saas-application.vercel.app/music",
+        //"http://localhost:3000/music",
         {
           message: message,
         },
@@ -98,39 +99,36 @@ function MusicGeneration() {
           {music.length === 0 && !loading && (
             <Empty label="No Conversation Started" />
           )}
-          {music && !loading && (
-            <div className="flex justify-center w-full h-full pb-4">
-              <div
-                className="rounded-lg overflow-hidden w-full md:w-1/2 flex flex-col p-8 bg-red-200
-          justify-center items-center"
-              >
-                <audio controls
-                  src={music}
-                  alt="Generated Image"
-                  className="w-full pb-4"
-                />
-                <Button
-                  className="w-full col-span-12 lg:col-span-2 text-white"
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "black",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "black/10",
-                    },
-                  }}
-                  onClick={() => {
-                    const link = document.createElement("a");
-                    link.href = image;
-                    link.download = "generated-music.mp4";
-                    link.click();
-                  }}
-                >
-                  Download
-                </Button>
-              </div>
-            </div>
-          )}
+      {music && !loading && (
+  <div className="flex justify-center w-full h-full pb-4">
+    <div
+      className="rounded-lg overflow-hidden w-full md:w-1/2 flex flex-col p-8 bg-red-200
+        justify-center items-center"
+    >
+      <audio controls src={music} className="w-full pb-4" />
+      <Button
+        className="w-full col-span-12 lg:col-span-2 text-white"
+        variant="contained"
+        sx={{
+          backgroundColor: "black",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "black/10",
+          },
+        }}
+        onClick={() => {
+          const link = document.createElement("a");
+          link.href = music; // Corrected to use the music URL
+          link.download = "generated-music.mp4";
+          link.click();
+        }}
+      >
+        Download
+      </Button>
+    </div>
+  </div>
+)}
+
         </div>
       </div>
     </div>
