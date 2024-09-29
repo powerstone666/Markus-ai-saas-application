@@ -29,7 +29,7 @@ function MusicGeneration() {
       const url = URL.createObjectURL(imageblob);
       setMusic(url);
      
-      setMessage(" ");
+      setMessage("");
     } catch (err) {
       console.log(err);
     } finally {

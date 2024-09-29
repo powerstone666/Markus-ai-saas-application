@@ -30,7 +30,7 @@ function ImageGeneration() {
       setImages(url);
       console.log(url);
 
-      setMessage(" ");
+      setMessage("");
     } catch (err) {
       console.log(err);
     } finally {
