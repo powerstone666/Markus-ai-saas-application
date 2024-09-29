@@ -1,3 +1,12 @@
+import { Button, Switch, Box, Skeleton } from "@mui/material";
+import Heading from "./heading";
+import { useState } from "react";
+import axios from "axios";
+import Empty from "./empty";
+import { red } from "@mui/material/colors";
+import LibraryMusicOutlined from "@mui/icons-material/LibraryMusicOutlined";
+
+
 function MusicGeneration() {
   const [message, setMessage] = useState("");
   const [music, setMusic] = useState("");
