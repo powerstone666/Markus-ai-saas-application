@@ -25,7 +25,7 @@ function CodeGeneration() {
     setConversation(newMessages);
 
     try {
-      const res = await axios.post("http://localhost:3000/codegeneration", {
+      const res = await axios.post("https://markus-ai-saas-application.vercel.app/codegeneration", {
         message: newMessages,
       });
 

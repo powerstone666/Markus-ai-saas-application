@@ -17,7 +17,7 @@ function ImageGeneration() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/image",
+        "https://markus-ai-saas-application.vercel.app/image",
         {
           message: message,
         },
