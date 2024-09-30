@@ -12,7 +12,7 @@ let messages = [
 ];
 
 let timeoutId = null;  // Timer to reset messages
-const TIMEOUT_DURATION = 10 * 60 * 1000; // 10 minutes
+const TIMEOUT_DURATION = 1 * 60 * 1000; // 10 minutes
 
 // Function to reset messages after a timeout
 function resetMessages() {
