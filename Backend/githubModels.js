@@ -4,7 +4,7 @@ import  dotenv  from "dotenv";
 dotenv.config();
 const token =process.env.GITHUB;
 const endpoint = "https://models.inference.ai.azure.com";
-const modelName = "gpt-4o-mini";
+const modelName = "Meta-Llama-3-8B-Instruct";
 
 // Initialize messages array to store conversation history
 let messages = [
