@@ -5,8 +5,9 @@ export const Musicgeneration=
 [
     passport.authenticate('jwt', { session: false }),
 async (req, res) => {
+
     const userMessage = req.body.message; 
-    console.log(userMessage);
+  
     try {
         const response = await Music({"inputs": userMessage});
         const blob = response; 
@@ -19,7 +20,7 @@ async (req, res) => {
                 await Log(req, res, req.user.email, "Musicgeneration");
               } catch (logError) {
                 console.error("Error logging user action:", logError);
-                // Optionally, you can still continue even if logging fails
+              
               }
         
     } catch (error) {

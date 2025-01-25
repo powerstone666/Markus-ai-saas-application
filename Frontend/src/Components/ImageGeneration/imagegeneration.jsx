@@ -28,8 +28,8 @@ function ImageGeneration() {
         }
       );
       const imageblob = res.data;
-      const url = URL.createObjectURL(imageblob);
-      setImages(url);
+      const url2 = URL.createObjectURL(imageblob);
+      setImages(url2);
       //setMessage("");
     } catch (err) {
       console.log(err);

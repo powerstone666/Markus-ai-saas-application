@@ -6,10 +6,10 @@ import Empty from "../empty";
 import { red } from "@mui/material/colors";
 import LibraryMusicOutlined from "@mui/icons-material/LibraryMusicOutlined";
 import { Typography } from "@mui/material";
-import { useContext } from "react";
-import { Context } from "../../main";
+
+
 function MusicGeneration() {
-  const {url}=useContext(Context);
+
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [music, setMusic] = useState("");
@@ -21,7 +21,7 @@ function MusicGeneration() {
 
     try {
       const res = await axios.post(
-        `${url}/api/v1/musicgeneration`,
+        `https://markus-ai-saas-application.vercel.app/api/v1/musicgeneration`,
         {
           message: message,
         },
@@ -32,8 +32,9 @@ function MusicGeneration() {
 
       // Create a URL from the blob
       const audioBlob = res.data;
-      const url2 = URL.createObjectURL(audioBlob);
-      setMusic(url2);
+      console.log(audioBlob);
+      const url = URL.createObjectURL(audioBlob);
+      setMusic(url);
       setMessage("");
     } catch (err) {
       console.log(err);
