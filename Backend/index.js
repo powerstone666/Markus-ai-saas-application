@@ -10,35 +10,12 @@ const server = express();
 
 server.use(express.json());
 const corsOptions = {
-    origin: "https://markus-ai.vercel.app", // Remove trailing slash
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"], // Array format
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-      "Accept",
-      "Origin",
-      "Access-Control-Request-Method",
-      "Access-Control-Request-Headers",
-    ],
-    exposedHeaders: [
-      "Content-Length",
-      "Content-Type",
-      "Authorization",
-      "Content-Disposition",
-      "Access-Control-Allow-Credentials"
-    ],
-    credentials: true,
-    optionsSuccessStatus: 204,
-    preflightContinue: false,
-    maxAge: 86400 // 24-hour preflight cache
-  };
-  
-  // Apply CORS middleware
-  server.use(cors(corsOptions));
-  
-  // Explicitly handle OPTIONS requests
-  server.options("*", cors(corsOptions));
+  origin: "https://markus-ai.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+server.use(cors(corsOptions));
   
 server.use(passport.initialize());
 
