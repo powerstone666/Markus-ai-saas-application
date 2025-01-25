@@ -7,7 +7,7 @@ const API_KEY = process.env.GOOGLE; // Replace with your Google API key
 const SEARCH_ENGINE_ID = process.env.ENGINE; // Replace with your Search Engine ID
 const token = process.env.GITHUB; // Replace with your Azure token
 const endpoint = "https://models.inference.ai.azure.com";
-const modelName = "gpt-4o-mini";
+const modelName = "gpt-4o";
 
 async function searchGoogle(query) {
   const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(query)}`;

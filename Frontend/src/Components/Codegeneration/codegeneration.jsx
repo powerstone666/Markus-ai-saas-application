@@ -1,18 +1,20 @@
-import { Button, Switch, Box, Skeleton } from "@mui/material";
-import Heading from "./heading";
+import { Button, Box, Skeleton } from "@mui/material";
+import Heading from "../heading";
 import { useState } from "react";
 import axios from "axios";
-import Empty from "./empty";
+import Empty from "../empty";
 import CodeOffOutlined from "@mui/icons-material/CodeOffOutlined";
 import { orange } from "@mui/material/colors";
 import ReactMarkdown from "react-markdown";
-
+import { Typography } from "@mui/material";
+import { useContext } from "react";
+import { Context } from "../../main";
 function CodeGeneration() {
-  const [checked, setChecked] = useState(false);
+  const {url}=useContext(Context);
   const [message, setMessage] = useState("");
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [error, setError] = useState("");
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -25,7 +27,7 @@ function CodeGeneration() {
     setConversation(newMessages);
 
     try {
-      const res = await axios.post("https://markus-ai-saas-application.vercel.app/codegeneration", {
+      const res = await axios.post(`${url}/api/v1/codegeneration`, {
         message: newMessages,
       });
 
@@ -38,6 +40,7 @@ function CodeGeneration() {
       setMessage("");
     } catch (err) {
       console.log(err);
+      setError(err.response?.data?.message || "An error occurred while fetching results.");
     } finally {
       setLoading(false);
     }
@@ -80,7 +83,8 @@ function CodeGeneration() {
             Generate
           </Button>
         </form>
-
+        {error && <Typography color="error">{error}</Typography>}
+        <p className="text-gray-400 text-center mt-4">If your request doesn’t work immediately, a quick retry usually resolves it! 🛠️</p>
         <div className="space-y-4 mt-4">
          
         </div>

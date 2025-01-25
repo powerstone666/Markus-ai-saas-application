@@ -1,22 +1,20 @@
 import {
   Button,
-  Switch,
   Box,
   Skeleton,
   Card,
   CardMedia,
   Typography,
 } from "@mui/material";
-import Heading from "./heading";
+import Heading from "../heading";
 import { useState } from "react";
 import axios from "axios";
 import { pink } from "@mui/material/colors";
-import Empty from "./empty";
+import Empty from "../empty";
 import ReactMarkdown from "react-markdown"; // Import React Markdown
 import { Link } from "@mui/material";
 import ManageSearchOutlined from "@mui/icons-material/ManageSearchOutlined";
 function Aisearch() {
-  const [checked, setChecked] = useState(false);
   const [message, setMessage] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [summary, setSummary] = useState("");
@@ -34,7 +32,7 @@ function Aisearch() {
     setError(""); // Reset error
 
     try {
-      const res = await axios.post("https://markus-ai-saas-application.vercel.app/search", {
+      const res = await axios.post("http://localhost:3000/api/v1/aisearch", {
         message: message,
       });
 
@@ -90,8 +88,9 @@ function Aisearch() {
             Generate
           </Button>
         </form>
-
+        
         {error && <Typography color="error">{error}</Typography>}
+        <p className="text-gray-400 text-center mt-4">If your request doesn’t work immediately, a quick retry usually resolves it! 🛠️</p>
 
         <div className="space-y-4 mt-4 ">
          
