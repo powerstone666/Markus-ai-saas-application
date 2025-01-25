@@ -17,6 +17,7 @@ const corsOptions = {
   };
   
   server.use(cors(corsOptions));
+  server.options("*", cors(corsOptions));
 
 server.use(passport.initialize());
 
