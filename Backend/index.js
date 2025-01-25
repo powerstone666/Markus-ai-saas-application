@@ -10,13 +10,13 @@ const server = express();
 
 server.use(express.json());
 const corsOptions = {
-  origin: "https://markus-ai.vercel.app",
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 server.use(cors(corsOptions));
-  
+  server.options("*", cors(corsOptions));
 server.use(passport.initialize());
 
 server.use("/api/v1",router);
