@@ -10,10 +10,14 @@ const server = express();
 
 server.use(express.json());
 const corsOptions = {
-  origin: "*",
+  origin: [
+    "https://markus-ai.vercel.app",
+    "https://markus-ai.vercel.app/musicgeneration"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
+
 
 server.use(cors(corsOptions));
   server.options("*", cors(corsOptions));
