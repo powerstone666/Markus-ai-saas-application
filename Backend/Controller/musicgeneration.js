@@ -24,8 +24,8 @@ async (req, res) => {
               }
         
     } catch (error) {
-        console.error('Error in /image endpoint:', error);
-        res.status(500).json({ error: "Internal server error" });
+        console.error('Error in /music endpoint:', error);
+        res.status(410).json({ error: "Something went wrong" });
     }
 }
 ]

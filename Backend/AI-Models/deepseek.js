@@ -1,6 +1,7 @@
 import { HfInference } from "@huggingface/inference";
 
 export async function DeepSeek(data) {
+  try{
   const hf = new HfInference(process.env.HUGGINGFACE);
 
   const response = await hf.textGeneration({
@@ -15,4 +16,8 @@ export async function DeepSeek(data) {
   const trimmedResponse = response.generated_text.replace(/<think>.*?<\/think>/g, "").trim();
 
   return trimmedResponse;
+}
+catch(err){
+  return "An error occurred while processing the request";
+}
 }

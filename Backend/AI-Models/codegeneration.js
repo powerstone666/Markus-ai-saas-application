@@ -29,7 +29,7 @@ function restartTimeout() {
 }
 
 export async function CodeGeneration(newMessage) {
-
+try{
   messages.push({ role: "user", content: newMessage });
 
 
@@ -65,3 +65,9 @@ export async function CodeGeneration(newMessage) {
  
   return assistantResponse;
 }
+catch(error){
+  console.error("Error in CodeGeneration:", error);
+  return "Failed to generate code";
+}
+}
+

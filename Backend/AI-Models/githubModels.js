@@ -31,7 +31,7 @@ function restartTimeout() {
 }
 
 export async function GithubModels(newMessage,modelName) {
- 
+ try{
   // Add the new message to the conversation history
   messages.push({ role: "user", content: newMessage });
 
@@ -64,4 +64,8 @@ export async function GithubModels(newMessage,modelName) {
 
   // Return the assistant's response
   return assistantResponse;
+}
+catch(err){
+  console.log(err);
+}
 }

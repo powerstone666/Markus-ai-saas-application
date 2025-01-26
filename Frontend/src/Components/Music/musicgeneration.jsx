@@ -32,7 +32,6 @@ function MusicGeneration() {
 
       // Create a URL from the blob
       const audioBlob = res.data;
-      console.log(audioBlob);
       const url = URL.createObjectURL(audioBlob);
       setMusic(url);
       setMessage("");
