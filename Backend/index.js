@@ -12,7 +12,8 @@ server.use(express.json());
 const corsOptions = {
   origin: [
     "https://markus-ai.vercel.app",
-    "https://markus-ai.vercel.app/musicgeneration"
+    "https://markus-ai.vercel.app/musicgeneration",
+    "http://localhost:5173",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
