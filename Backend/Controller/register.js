@@ -14,9 +14,9 @@ export const Register = async (req, res) => {
           error: "User already exists" });
       } else {
         const secretKey =process.env.AES_KEY;
-        console.log(secretKey);
+   
         const passwordHash= CryptoJS.AES.encrypt(password, secretKey).toString();
-        console.log(username, email, passwordHash);
+     
         await User.create({
           name,
           email,

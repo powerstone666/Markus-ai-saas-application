@@ -32,7 +32,7 @@ function Aisearch() {
     setError(""); // Reset error
 
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/aisearch", {
+      const res = await axios.post("https://markus-ai-saas-application.vercel.app/api/v1/aisearch", {
         message: message,
       });
 
