@@ -2,10 +2,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import {useState} from 'react';
-import {useContext} from 'react';
-import { Context } from "../../main";
 function Register() {
-  const {url}=useContext(Context);
 const [user,setUser]=useState({username:"",email:"",password:""});
 const handleChange=(e)=>{
   setUser({...user,[e.target.name]:e.target.value});
@@ -13,6 +10,8 @@ const handleChange=(e)=>{
 const handleSubmit=async (e)=>{
   e.preventDefault();
   try{
+    const url="https://markus-ai-saas-application.vercel.app"
+      //const url="http://localhost:3000"
    const res= await axios.post(`${url}/api/v1/register`,user)
 
   }

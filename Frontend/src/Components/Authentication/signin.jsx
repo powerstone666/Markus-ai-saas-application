@@ -5,7 +5,7 @@ import {useState} from 'react';
 import {useContext} from 'react';
 import { Context } from "../../main";
 function Signin() {
-  const {setToken,url}=useContext(Context);
+  const {setToken}=useContext(Context);
   const [user, setUser] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const handleChange = (e) => {
@@ -14,6 +14,9 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+        // const url="http://localhost:3000"
+         const url="https://markus-ai-saas-application.vercel.app"
+
       const res = await axios.post(`${url}/api/v1/login`, user);
       if (res.data && res.data.accessToken) {
         setToken(res.data.accessToken);

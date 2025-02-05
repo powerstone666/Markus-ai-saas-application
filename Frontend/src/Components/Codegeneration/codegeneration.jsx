@@ -7,10 +7,9 @@ import CodeOffOutlined from "@mui/icons-material/CodeOffOutlined";
 import { orange } from "@mui/material/colors";
 import ReactMarkdown from "react-markdown";
 import { Typography } from "@mui/material";
-import { useContext } from "react";
-import { Context } from "../../main";
+
 function CodeGeneration() {
-  const {url}=useContext(Context);
+
   const [message, setMessage] = useState("");
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,7 +26,8 @@ function CodeGeneration() {
     setConversation(newMessages);
 
     try {
-    
+       // const url="http://localhost:3000"
+        const url="https://markus-ai-saas-application.vercel.app"
       const res = await axios.post(`${url}/api/v1/codegeneration`, {
         message: newMessages,
       });

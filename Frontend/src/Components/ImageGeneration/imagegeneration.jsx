@@ -3,8 +3,7 @@ import Heading from "../heading";
 import { useState } from "react";
 import axios from "axios";
 import Empty from "../empty";
-import { useContext } from "react";
-import { Context } from "../../main";
+
 import FilterVintageOutlined from "@mui/icons-material/FilterVintageOutlined";
 import  {Typography} from "@mui/material";
 function ImageGeneration() {
@@ -12,12 +11,14 @@ function ImageGeneration() {
   const [message, setMessage] = useState("");
   const [image, setImages] = useState("");
   const [loading, setLoading] = useState(false);
-  const { url } =useContext(Context);
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
 
     try {
+        //const url="http://localhost:3000"
+        const url="https://markus-ai-saas-application.vercel.app"
       const res = await axios.post(
         `${url}/api/v1/imagegeneration`,
         {

@@ -1,6 +1,6 @@
 import { Button, Switch, Box, Skeleton } from "@mui/material";
 import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import axios from "axios";
 import Empty from "../empty";
 import ReactMarkdown from "react-markdown";
@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Typography } from "@mui/material";
-import { Context } from "../../main";
+
 
 
 
@@ -57,7 +57,7 @@ const models= [
 
 
 function Conversation() {
-  const {url} = useContext(Context);
+
     const [error, setError] = useState("");
   const [selectedModel, setSelectedModel] = useState("Gemini-2.0-flash-thinking (Default)");
   const [checked, setChecked] = useState(false);
@@ -78,12 +78,13 @@ function Conversation() {
     setConversation(newMessages);
 
     try {
-        console.log(url)
+      const url="https://markus-ai-saas-application.vercel.app"
+        //const url="http://localhost:3000"
       const res = await axios.post(`${url}/api/v1/conversation`, {
         message: newMessages,
         model: selectedModel,
       });
-      console.log(res)
+  
       const apiMessage = {
         role: "ai",
         content: res.data.message,
