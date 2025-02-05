@@ -83,10 +83,10 @@ function Conversation() {
         message: newMessages,
         model: selectedModel,
       });
-      console.log(res.data.message)
+      console.log(res)
       const apiMessage = {
         role: "ai",
-        content: res,
+        content: res.data.message,
       };
         
       setConversation((current) => [...current, apiMessage]);
