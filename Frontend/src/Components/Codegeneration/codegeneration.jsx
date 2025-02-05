@@ -27,10 +27,11 @@ function CodeGeneration() {
     setConversation(newMessages);
 
     try {
+    
       const res = await axios.post(`${url}/api/v1/codegeneration`, {
         message: newMessages,
       });
-
+        
       const apiMessage = {
         role: "ai",
         content: res.data.message,

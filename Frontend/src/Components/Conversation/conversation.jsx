@@ -78,11 +78,11 @@ function Conversation() {
     setConversation(newMessages);
 
     try {
+     
       const res = await axios.post(`${url}/api/v1/conversation`, {
         message: newMessages,
         model: selectedModel,
       });
-
       const apiMessage = {
         role: "ai",
         content: res.data.message,
