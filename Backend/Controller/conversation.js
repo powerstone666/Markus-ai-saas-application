@@ -36,7 +36,7 @@ const models = {
     "Phi-3-small instruct (128k)": "Phi-3-small-128k-instruct",
     "Phi-3-small instruct (8k)": "Phi-3-small-8k-instruct",
     "Phi-3.5-MoE instruct (128k)": "Phi-3.5-MoE-instruct",
-    "Phi-3.5-mini instruct (128k)": "Phi-3.5-mini-128k-instruct",
+    "Phi-3.5-mini instruct (128k)": "Phi-3.5-mini-instruct",
     "Phi-4": "phi-4",
   };
   

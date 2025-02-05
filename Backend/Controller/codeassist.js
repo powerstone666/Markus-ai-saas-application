@@ -10,6 +10,7 @@ export const Codeassist = [
     try {
       // Validate the message body
       const userMessage = req.body.message;
+     
       if (!userMessage || !Array.isArray(userMessage)) {
         return res.status(400).json({ error: "Message should be an array of user messages" });
       }
@@ -28,16 +29,16 @@ export const Codeassist = [
       }
 
       // Generate code response
+   
       let aiResponse;
       try {
+   
         aiResponse = await CodeGeneration(latestMessage, "Codestral-2501");
-      } catch (aiError) {
-        console.error("Error in CodeGeneration:", aiError);
+        return res.json({ message: aiResponse });
+      } catch (error) {
+        console.error("Error in CodeGeneration:",error);
         return res.status(500).json({ error: "Failed to generate code" });
       }
-
-      // Send back the AI-generated response
-      return res.json({ message: aiResponse });
     } catch (err) {
       console.error("Error in /codegeneration endpoint:", err);
       return res.status(500).json({ error: "Internal server error" });

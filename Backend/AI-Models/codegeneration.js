@@ -4,7 +4,7 @@ import  dotenv  from "dotenv";
 dotenv.config();
 const token =process.env.GITHUB;
 const endpoint = "https://models.inference.ai.azure.com";
-const modelName = "Mistral-large-2407";
+
 
 
 let messages = [
@@ -28,7 +28,7 @@ function restartTimeout() {
   timeoutId = setTimeout(resetMessages, TIMEOUT_DURATION);
 }
 
-export async function CodeGeneration(newMessage) {
+export async function CodeGeneration(newMessage,modelName) {
 try{
   messages.push({ role: "user", content: newMessage });
 

@@ -1,6 +1,8 @@
 
 export const Health= async (req, res) => {
+ 
     res.json({
-        "status":"ok all services are up"
+        "status":"ok all services are up",
+        originalText
     })
 }
