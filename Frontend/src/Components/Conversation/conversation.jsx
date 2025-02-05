@@ -86,7 +86,7 @@ function Conversation() {
       console.log(res.data.message)
       const apiMessage = {
         role: "ai",
-        content: res.data.message,
+        content: res,
       };
         
       setConversation((current) => [...current, apiMessage]);
